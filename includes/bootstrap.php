@@ -2,15 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Jascha030\WpFrontendCaseTheme\Bootstrap;
+namespace Jascha030\WpFrontendCaseTheme\Theme;
 
 use InvalidArgumentException;
 use RuntimeException;
 
+/**
+ * Default theme config.php path.
+ * Set prior to theme init to override, preferably in `wp-config.php`.
+ */
 if (! defined('SB_FEC_THEME_CONFIG_FILE')) {
     define('SB_FEC_THEME_CONFIG_FILE', __DIR__ . '/config.php');
 }
 
+/**
+ * Retrieve the main config file as iterator.
+ *
+ * Allows for alternative config file by setting SB_FEC_THEME_CONFIG_FILE in wp-config.php.
+ * Use absolute paths when setting SB_FEC_THEME_CONFIG_FILE.
+ */
 function config(): \ArrayIterator
 {
     static $config;
@@ -34,8 +44,11 @@ function config(): \ArrayIterator
 }
 
 /**
- * @return array|mixed
+ * Get value for either, a specific config key or an array copy of the complete config.
+ *
  * @throws InvalidArgumentException|RuntimeException
+ *
+ * @return array|mixed
  */
 function getThemeConfig(?string $key = null): mixed
 {
@@ -52,6 +65,106 @@ function getThemeConfig(?string $key = null): mixed
     return config()->offsetGet($key);
 }
 
-function getAutoloader(string $themeRoot): string
+/**
+ * Array map callback used in the `load()` function.
+ *
+ * @see load()
+ * @see \array_map()
+ */
+function sanitizeAutoloadPath(string $path): string
 {
+    if (str_ends_with('autoload.php', $path)) {
+        return $path;
+    }
+
+    if (str_ends_with('vendor', $path)) {
+        return $path . '/' . 'autoload.php';
+    }
+
+    if (str_ends_with('/', $path)) {
+        return str_ends_with('vendor/', $path)
+            ? $path . 'autoload.php'
+            : $path . '/vendor/autoload.php';
+    }
+
+    return $path;
+}
+
+/**
+ * Resolves and requires the configured autoloaders.
+ *
+ * @throws RuntimeException
+ */
+function load(string $themeRoot): void
+{
+    $resolver = getThemeConfig('autoload_paths');
+
+    if (! is_callable($resolver)) {
+        // todo: add msg.
+        throw new RuntimeException('');
+    }
+
+    $paths = $resolver($themeRoot);
+    $paths = array_filter(
+        array_map('sanitizeAutoloadPath', $paths),
+        static fn (string $path): bool => file_exists($path)
+    );
+
+    if (0 === count($paths)) {
+        throw new RuntimeException('');
+    }
+
+    foreach ($paths as $path) {
+        require_once $path;
+    }
+}
+
+/**
+ * Prepends current namespace for callables provided as string literal.
+ *
+ * @see __NAMESPACE__
+ */
+function namespaced(string|callable $callable): string|callable
+{
+    if (! is_string($callable)) {
+        return $callable;
+    }
+
+    return sprintf('%s\\%s', __NAMESPACE__, $callable);
+}
+
+/**
+ * Copy of WordPress's `add_action()` function with additions.
+ *
+ * When callables are provided as string literal, they are prepended with the current namespace.
+ * Adds (partial) compatibility for phpunit by just returning `true`, outside of WordPress context.
+ *
+ * @see __NAMESPACE__
+ * @see \add_action()
+ */
+function add_action(string $tag, string|callable $callable, int $prio = 10, int $args = 0): bool
+{
+    if (! function_exists('\\add_action')) {
+        return true;
+    }
+
+    return \add_action($tag, namespaced($callable), $prio, $args);
+}
+
+/**
+ * Copy of WordPress's `add_filter()` function with additions.
+ *
+ * When callables are provided as string literal, they are prepended with the current namespace.
+ * Adds (partial) compatibility for phpunit by just returning `true`, outside of WordPress context.
+ *
+ * @see __NAMESPACE__
+ * @see \add_filter()
+ */
+function add_filter(string $tag, string|callable $callable, int $prio = 10, int $args = 0): bool
+{
+    if (! function_exists('\\add_filter')) {
+        return true;
+    }
+
+    return \add_filter($tag, namespaced($callable), $prio, $args);
 }
