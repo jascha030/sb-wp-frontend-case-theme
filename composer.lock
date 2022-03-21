@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4688f6eae1d723ed64f554710333ba1f",
+    "content-hash": "cd2e2b35e3127369f172286619a84d30",
     "packages": [
         {
             "name": "composer/installers",
@@ -149,6 +149,58 @@
                 }
             ],
             "time": "2022-03-18T12:27:54+00:00"
+        },
+        {
+            "name": "jascha030/twig-service",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jascha030/twig-service.git",
+                "reference": "55ee0978a58fb33668b05bf604c4758b288cd6db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jascha030/twig-service/zipball/55ee0978a58fb33668b05bf604c4758b288cd6db",
+                "reference": "55ee0978a58fb33668b05bf604c4758b288cd6db",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8",
+                "twig/twig": "^3.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.6",
+                "phpunit/phpunit": "^9.5",
+                "roave/security-advisories": "dev-latest"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jascha030\\Twig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jascha030",
+                    "email": "contact@jaschavanaalst.nl"
+                }
+            ],
+            "description": "Simple twig service interface and class I like to wrap around the Environment object during development.",
+            "keywords": [
+                "dic",
+                "service",
+                "templating",
+                "twig"
+            ],
+            "support": {
+                "issues": "https://github.com/jascha030/twig-service/issues",
+                "source": "https://github.com/jascha030/twig-service/tree/1.0.0"
+            },
+            "time": "2022-02-21T13:54:27+00:00"
         },
         {
             "name": "opis/closure",
