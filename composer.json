@@ -1,0 +1,41 @@
+{
+  "name": "jascha030/wp-frontend-case-theme",
+  "type": "wordpress-theme",
+  "require": {
+    "composer/installers": "*",
+    "twig/twig": "^3.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jascha030\\WpFrontendCaseTheme\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Jascha030\\WpFrontendCaseTheme\\Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Jascha030",
+      "email": "contact@jaschavanaalst.nl"
+    }
+  ],
+  "minimum-stability": "stable",
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.8",
+    "phpunit/phpunit": "^9.5",
+    "symfony/var-dumper": "^6.0"
+  },
+  "scripts": {
+    "php-cs-fixer": "php-cs-fixer fix --config=.php-cs-fixer.dist.php",
+    "phpunit": "phpunit --config phpunit.xml",
+    "format": "@php-cs-fixer",
+    "test": "@phpunit"
+  }
+}
