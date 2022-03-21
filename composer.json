@@ -24,13 +24,24 @@
   "minimum-stability": "stable",
   "config": {
     "allow-plugins": {
-      "composer/installers": true
+      "composer/installers": true,
+      "roots/wordpress-core-installer": true
     }
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^3.8",
+    "roave/security-advisories": "dev-latest",
     "phpunit/phpunit": "^9.5",
-    "symfony/var-dumper": "^6.0"
+    "friendsofphp/php-cs-fixer": "^3.7",
+    "vlucas/phpdotenv": "^5.4",
+    "roots/wordpress": "^5.9"
+  },
+  "extra": {
+    "installer-paths": {
+      ".wp/wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ]
+    },
+    "wordpress-install-dir": ".wp/"
   },
   "scripts": {
     "php-cs-fixer": "php-cs-fixer fix --config=.php-cs-fixer.dist.php",
