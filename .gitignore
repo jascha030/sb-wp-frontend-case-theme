@@ -1,0 +1,25 @@
+# PhpStorm
+/.idea/
+/.idea/*
+
+# Composer
+/vendor/
+/vendor/*
+
+# VS Code
+/.vscode/
+/.vscode/*
+
+*.DS_Store
+
+node_modules/
+
+*.cache
+**.cache
+
+
+.pm.toml
+
+
+.env
+.wp
