@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--suppress HtmlRequiredLangAttribute -->
+<html {{ language_attributes | raw }}>
+    {% block head %}
+        {% include 'layout/head.twig' %}
+    {% endblock %}
+    <body class="{{ body_class | raw }}">
+        {% block header %}
+            {{ action('after_body_open') }}
+        {% endblock %}
+
+        {% block base_content %}
+            <h1>Hiya folks!</h1>
+        {% endblock %}
+
+        {% block footer %}
+            {{ do_action('wp_footer') }}
+            {{ action('before_body_close') }}
+        {% endblock %}
+    </body>
+</html>
