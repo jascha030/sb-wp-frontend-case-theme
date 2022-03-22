@@ -37,8 +37,8 @@
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
-    "phpunit/phpunit": "^9.5",
     "friendsofphp/php-cs-fixer": "^3.7",
+    "phpunit/phpunit": "^9.5",
     "vlucas/phpdotenv": "^5.4",
     "roots/wordpress": "^5.9",
     "symfony/var-dumper": "^6.0"

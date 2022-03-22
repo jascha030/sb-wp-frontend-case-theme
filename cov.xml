@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1647985205">
-  <project timestamp="1647985205">
+<coverage generated="1647985372">
+  <project timestamp="1647985372">
     <file name="/Users/jaschavanaalst/.development/Projects/Wordpress/themes/wp-frontend-case-theme/app/Exception/Config/ConfigExceptionInterface.php">
       <metrics loc="27" ncloc="15" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
