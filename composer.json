@@ -7,6 +7,12 @@
     "jascha030/twig-service": "^1.0"
   },
   "autoload": {
+    "files": [
+      "includes/helpers/container.php",
+      "includes/helpers/plugin.php",
+      "includes/helpers/theme.php",
+      "includes/helpers/twig.php"
+    ],
     "psr-4": {
       "Jascha030\\WpFrontendCaseTheme\\": "src/"
     }
