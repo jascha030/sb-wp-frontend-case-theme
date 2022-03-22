@@ -99,7 +99,11 @@ function getContainer(): ContainerInterface
 {
     static $container;
 
-    return $container ?? $container = buildContainer(getThemeConfig('definition_dirs') ?? []);
+    if (! isset($container)) {
+        $container = buildContainer(...getThemeConfig('definition_dirs'));
+    }
+
+    return $container;
 }
 
 /**
