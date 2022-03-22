@@ -2,7 +2,7 @@
 <!--suppress HtmlRequiredLangAttribute -->
 <html {{ language_attributes | raw }}>
     {% block head %}
-        {% include 'layout/head.twig' %}
+        {% include 'head.twig' %}
     {% endblock %}
     <body class="{{ body_class | raw }}">
         {% block header %}
@@ -10,11 +10,18 @@
         {% endblock %}
 
         {% block base_content %}
-            <h1>Hiya folks!</h1>
+            <p>
+                This is a base template, which should never be used in live context.
+                You can extend this template using the <a href="">Twig</a>-templating language for PHP.
+            </p>
+
+            <p>
+                <a href="">You can read the full Twig documentation here.</a>
+            </p>
         {% endblock %}
 
         {% block footer %}
-            {{ do_action('wp_footer') }}
+            {{ action('wp_footer') }}
             {{ action('before_body_close') }}
         {% endblock %}
     </body>
