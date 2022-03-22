@@ -14,7 +14,7 @@
       "includes/helpers/twig.php"
     ],
     "psr-4": {
-      "Jascha030\\WpFrontendCaseTheme\\": "src/"
+      "Jascha030\\WpFrontendCaseTheme\\": "app/"
     }
   },
   "autoload-dev": {
