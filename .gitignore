@@ -1,25 +1,24 @@
-# PhpStorm
-/.idea/
-/.idea/*
+# Project files
+.idea
+.vscode
 
 # Composer
-/vendor/
-/vendor/*
-
-# VS Code
-/.vscode/
-/.vscode/*
-
-*.DS_Store
-
-node_modules/
-
+vendor
 *.cache
 **.cache
 
+# NodeJS
+node_modules/
+dist/
 
+# Environment
+.env
+
+# PMR
 .pm.toml
 
-
-.env
+# Dev completions
 .wp
+
+# macOS
+*.DS_Store
