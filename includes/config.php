@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 $baseConfig = [
-    'environment'      => 'develop',
-    'autoloader_paths' => static function (string $themeRoot): array {
+    'environment'    => 'develop',
+    'autoload_paths' => static function (string $themeRoot): array {
         $paths = [$themeRoot];
 
         if (defined('ABSPATH')) {

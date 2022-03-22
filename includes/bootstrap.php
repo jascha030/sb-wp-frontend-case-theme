@@ -42,7 +42,7 @@ function config(): \ArrayIterator
         ));
     }
 
-    return $config = new \ArrayIterator(SB_FEC_THEME_CONFIG_FILE);
+    return $config = new \ArrayIterator(include SB_FEC_THEME_CONFIG_FILE);
 }
 
 /**
@@ -87,10 +87,10 @@ function sanitizeAutoloadPath(string $path): string
     if (str_ends_with('/', $path)) {
         return str_ends_with('vendor/', $path)
             ? $path . 'autoload.php'
-            : $path . '/vendor/autoload.php';
+            : $path . 'vendor/autoload.php';
     }
 
-    return $path;
+    return $path . '/vendor/autoload.php';
 }
 
 /**
@@ -119,7 +119,7 @@ function load(string $themeRoot): void
      * @noinspection PhpUndefinedVariableInspection
      */
     $paths = array_filter(
-        array_map('sanitizeAutoloadPath', $paths),
+        array_map('Jascha030\WpFrontendCaseTheme\Theme\sanitizeAutoloadPath', $paths),
         static fn (string $path): bool => file_exists($path)
     );
 
