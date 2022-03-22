@@ -6,7 +6,7 @@ namespace Jascha030\WpFrontendCaseTheme\Exception\Config;
 
 use InvalidArgumentException;
 
-class InvalidThemeConfigValueException extends InvalidArgumentException implements ConfigExceptionInterface
+class InvalidThemeConfigException extends InvalidArgumentException implements ConfigExceptionInterface
 {
     public function __construct(
         private string $key,
@@ -16,17 +16,26 @@ class InvalidThemeConfigValueException extends InvalidArgumentException implemen
         parent::__construct($this->createMessage());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getKey(): string
     {
         return $this->key;
     }
 
-    public function getValue()
+    /**
+     * {@inheritDoc}
+     */
+    public function getValue(): mixed
     {
         return $this->value;
     }
 
-    public function getRequiredTypes(): array
+    /**
+     * {@inheritDoc}
+     */
+    public function getRequiredTypes(): ?array
     {
         return $this->requiredTypes;
     }
@@ -37,7 +46,7 @@ class InvalidThemeConfigValueException extends InvalidArgumentException implemen
             ? ": \"{$this->getValue()}\""
             : '';
         $typesMsg = null !== $this->getRequiredTypes()
-            ? '. Accepted type(s): ' . implode($this->getRequiredTypes()) :
+            ? '. Accepted type(s): ' . implode(', ', $this->getRequiredTypes()) :
             '';
 
         return sprintf(
