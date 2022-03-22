@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1647985205">
+  <project timestamp="1647985205">
+    <file name="/Users/jaschavanaalst/.development/Projects/Wordpress/themes/wp-frontend-case-theme/app/Exception/Config/ConfigExceptionInterface.php">
+      <metrics loc="27" ncloc="15" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/Users/jaschavanaalst/.development/Projects/Wordpress/themes/wp-frontend-case-theme/app/Exception/Config/InvalidThemeConfigException.php">
+      <class name="Jascha030\WpFrontendCaseTheme\Exception\Config\InvalidThemeConfigException" namespace="global">
+        <metrics complexity="7" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="18" coveredelements="18"/>
+      </class>
+      <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="16" type="stmt" count="3"/>
+      <line num="22" type="method" name="getKey" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="24" type="stmt" count="3"/>
+      <line num="30" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="32" type="stmt" count="3"/>
+      <line num="38" type="method" name="getRequiredTypes" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="40" type="stmt" count="3"/>
+      <line num="43" type="method" name="createMessage" visibility="private" complexity="3" crap="3" count="3"/>
+      <line num="45" type="stmt" count="3"/>
+      <line num="46" type="stmt" count="2"/>
+      <line num="47" type="stmt" count="1"/>
+      <line num="48" type="stmt" count="3"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="50" type="stmt" count="2"/>
+      <line num="52" type="stmt" count="3"/>
+      <line num="55" type="stmt" count="3"/>
+      <metrics loc="60" ncloc="51" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="18" coveredelements="18"/>
+    </file>
+    <metrics files="2" loc="87" ncloc="66" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="18" coveredelements="18"/>
+  </project>
+</coverage>

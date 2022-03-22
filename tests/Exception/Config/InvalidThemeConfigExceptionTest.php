@@ -1,6 +1,8 @@
 <?php
 
-namespace Jascha030\WpFrontendCaseTheme\Tests\Jascha030\WpFrontendCaseTheme\Tests\Exception\Config;
+declare(strict_types=1);
+
+namespace Jascha030\WpFrontendCaseTheme\Tests\Exception\Config;
 
 use Jascha030\WpFrontendCaseTheme\Exception\Config\InvalidThemeConfigException;
 use PHPUnit\Framework\TestCase;
@@ -21,15 +23,17 @@ class InvalidThemeConfigExceptionTest extends TestCase
 
     public function testGetRequiredTypes(): void
     {
-        $expected = ['string', 'string[]'];
+        $expected  = ['string', 'string[]'];
+        $exception = new InvalidThemeConfigException('test_key', '', $expected);
 
-        $this->assertEquals(
-            'test_key',
-            (new InvalidThemeConfigException('test_key'))->getKey()
-        );
+        $this->assertEquals($expected, $exception->getRequiredTypes());
     }
 
     public function testGetValue(): void
     {
+        $this->assertEquals(
+            'test_value',
+            (new InvalidThemeConfigException('test_key', 'test_value'))->getValue()
+        );
     }
 }
