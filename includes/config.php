@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-return [
+$baseConfig = [
+    'environment'      => 'develop',
     'autoloader_paths' => static function (string $themeRoot): array {
         $paths = [$themeRoot];
 
@@ -16,4 +17,13 @@ return [
 
         return apply_filters('sb_fec_theme_autoload_paths', $paths);
     },
+    'definition_dirs' => [
+        __DIR__ . '/definitions',
+    ],
 ];
+
+if (defined('WP_ENV')) {
+    $baseConfig['environment'] = WP_ENV;
+}
+
+return $baseConfig;
