@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--suppress HtmlRequiredLangAttribute -->
+<html {{ language_attributes | raw }}>
+    {% include head|default('layout/base-head.twig') %}
+    <body class="{{ body_class | raw }}">
+        {{ action('after_body_open') }}
+
+        {% block base_content %}
+            <div>
+                <h1>Hey, listen...</h1>
+
+                <p>
+                    This is a base template, which should never be used in live context.
+                    You can extend this template using the <a href="{{ twig_info.twig_repo_url }}" target="_blank">Twig-templating language</a> for PHP.
+                </p>
+
+                <p>
+                    You can read the full Twig documentation <a href="{{ twig_info.twig_docs_url }}" target="_blank">here</a>.
+                </p>
+            </div>
+        {% endblock %}
+
+        {% include footer|default('layout/base-footer.twig') %}
+        {{ action('before_body_close') }}
+    </body>
+</html>
