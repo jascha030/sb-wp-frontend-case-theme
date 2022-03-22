@@ -30,10 +30,12 @@ function config(): \ArrayIterator
     }
 
     if (! defined('SB_FEC_THEME_CONFIG_FILE')) {
+        // todo: add config file exception.
         throw new RuntimeException('SB_FEC_THEME_CONFIG_FILE was not defined.');
     }
 
     if (! file_exists(SB_FEC_THEME_CONFIG_FILE)) {
+        // todo: add composer exception.
         throw new InvalidArgumentException(sprintf(
             'Could not find a valid config file at path: "%s".',
             SB_FEC_THEME_CONFIG_FILE
@@ -57,6 +59,7 @@ function getThemeConfig(?string $key = null): mixed
     }
 
     if (! config()->offsetExists($key)) {
+        // todo: add config exception.
         throw new InvalidArgumentException(
             "Could not find theme configuration with key: \"{$key}\"."
         );
@@ -99,19 +102,30 @@ function load(string $themeRoot): void
 {
     $resolver = getThemeConfig('autoload_paths');
 
-    if (! is_callable($resolver)) {
-        // todo: add msg.
-        throw new RuntimeException('');
+    if (is_callable($resolver)) {
+        $paths = $resolver($themeRoot);
     }
 
-    $paths = $resolver($themeRoot);
+    if (is_array($resolver)) {
+        $paths = $resolver;
+    }
+
+    if (! is_callable($resolver) && ! is_array($resolver)) {
+        // todo: config exception.
+        throw new RuntimeException('No valid config set for key: "autoload_paths".');
+    }
+
+    /**
+     * @noinspection PhpUndefinedVariableInspection
+     */
     $paths = array_filter(
         array_map('sanitizeAutoloadPath', $paths),
         static fn (string $path): bool => file_exists($path)
     );
 
     if (0 === count($paths)) {
-        throw new RuntimeException('');
+        // todo: add composer exception.
+        throw new RuntimeException('No autoloaders could be retrieved.');
     }
 
     foreach ($paths as $path) {
