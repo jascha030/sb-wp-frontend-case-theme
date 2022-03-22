@@ -14,11 +14,19 @@ use function DI\create;
 use function DI\get;
 use function Jascha030\WpFrontendCaseTheme\Helpers\Container\extendableData;
 
+function getTemplateGlobals(): array
+{
+    global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite, $wpdb, $wp_version, $wp, $id, $comment, $user_ID;
+
+    return compact('posts', 'post', 'wp_did_header', 'wp_query', 'wp_rewrite', 'wpdb', 'wp_version', 'wp', 'id', 'comment', 'user_ID');
+}
+
 return [
     'twig.paths'     => [dirname(__FILE__, 3) . '/templates/twig'],
     'twig.functions' => static function (): array {
         /**
          * do_action, also can be called as action.
+         *
          * @param string $tag
          * @param mixed  ...$arguments
          *
@@ -84,8 +92,6 @@ return [
         $have_posts = static fn () => \have_posts();
 
         /**
-         * @return void
-         *
          * @see the_post()
          */
         $the_post = static fn () => \the_post();
@@ -105,31 +111,12 @@ return [
     },
     'twig.filters' => static fn (ContainerInterface $container): array => extendableData($container, 'twig', 'filters'),
     'twig.globals' => static function (): array {
-        global $posts,
-               $post,
-               $wp_did_header,
-               $wp_query,
-               $wp_rewrite,
-               $wpdb,
-               $wp_version,
-               $wp,
-               $id,
-               $comment,
-               $user_ID;
-
-        return compact(
-            'posts',
-            'post',
-            'wp_did_header',
-            'wp_query',
-            'wp_rewrite',
-            'wpdb',
-            'wp_version',
-            'wp',
-            'id',
-            'comment',
-            'user_ID'
-        );
+        return array_merge(getTemplateGlobals(), [
+            'twig_info' => [
+                'twig_repo_url' => 'https://github.com/twigphp/Twig',
+                'twig_docs_url' => 'https://twig.symfony.com/doc/3.x/',
+            ],
+        ]);
     },
     LoaderInterface::class => create(FilesystemLoader::class)->constructor(get('twig.paths')),
     Environment::class     => static function (ContainerInterface $container): Environment {
