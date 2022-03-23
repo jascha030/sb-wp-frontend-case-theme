@@ -35,7 +35,6 @@ function config(): \ArrayIterator
     }
 
     if (! file_exists(SB_FEC_THEME_CONFIG_FILE)) {
-        // todo: add composer exception.
         throw new InvalidArgumentException(sprintf(
             'Could not find a valid config file at path: "%s".',
             SB_FEC_THEME_CONFIG_FILE
