@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Jascha030\WpFrontendCaseTheme\Theme;
 
+use Jascha030\WpFrontendCaseTheme\Theme\Asset\Script\Script;
 use RuntimeException;
+use function Jascha030\WpFrontendCaseTheme\Helpers\Theme\themeStyles;
 use function Jascha030\WpFrontendCaseTheme\Helpers\Theme\themeSupports;
 
 /**
@@ -40,6 +42,23 @@ function addThemeSupports(): void
         }
 
         \add_theme_support($feature, $value);
+    }
+}
+
+function addThemeCss(): void
+{
+    foreach (themeStyles() as $value) {
+        if (! is_subclass_of($value, Script::class)) {
+            continue;
+        }
+
+        wp_enqueue_style(
+            $value->getHandle(),
+            $value->getFile(),
+            $value->getDependencies(),
+            $value->getVersion(),
+            $value->getMedia(),
+        );
     }
 }
 
