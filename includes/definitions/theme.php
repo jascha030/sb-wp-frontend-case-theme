@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
+use Jascha030\WpFrontendCaseTheme\Theme\Asset\Script\Script;
+use Jascha030\WpFrontendCaseTheme\Theme\Asset\Style\Style;
 use function Jascha030\WpFrontendCaseTheme\Theme\getThemeConfig;
 
 return [
+    'theme.root'     => dirname(__FILE__, 3),
     'theme.supports' => [
         'custom-background'                   => false,
         'customize-selective-refresh-widgets' => false,
@@ -24,8 +27,21 @@ return [
         ],
     ],
     'theme.css' => static function (): array {
-        $scripts = getThemeConfig('styles');
+        $styles = [];
 
-        foreach ($scripts as $script);
+        foreach (getThemeConfig('styles') as $handle => $arguments) {
+            $styles[$handle] = new Style($handle, $arguments);
+        }
+
+        return $styles;
+    },
+    'theme.scripts' => static function (): array {
+        $scripts = [];
+
+        foreach (getThemeConfig('scripts') as $handle => $arguments) {
+            $scripts[$handle] = new Script($handle, $arguments);
+        }
+
+        return $scripts;
     },
 ];
