@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-$baseConfig = [
-    'environment' => 'develop',
-    'styles'      => [
-        'dist-tailwind' => 'dist/tailwind.css',
-    ],
+return [
+    'environment'    => defined('WP_ENV') ? WP_ENV : 'develop',
+    'styles'         => ['dist-tailwind' => 'dist/tailwind.css'],
     'scripts'        => [],
     'autoload_paths' => static function (string $themeRoot): array {
         $paths = [$themeRoot];
@@ -23,9 +21,3 @@ $baseConfig = [
     },
     'definition_dirs' => [__DIR__ . '/definitions'],
 ];
-
-if (defined('WP_ENV')) {
-    $baseConfig['environment'] = WP_ENV;
-}
-
-return $baseConfig;
