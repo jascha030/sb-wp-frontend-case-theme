@@ -3,7 +3,11 @@
 declare(strict_types=1);
 
 $baseConfig = [
-    'environment'    => 'develop',
+    'environment' => 'develop',
+    'styles'      => [
+        'dist-tailwind' => 'dist/tailwind.css',
+    ],
+    'scripts'        => [],
     'autoload_paths' => static function (string $themeRoot): array {
         $paths = [$themeRoot];
 
@@ -17,9 +21,7 @@ $baseConfig = [
 
         return apply_filters('sb_fec_theme_autoload_paths', $paths);
     },
-    'definition_dirs' => [
-        __DIR__ . '/definitions',
-    ],
+    'definition_dirs' => [__DIR__ . '/definitions'],
 ];
 
 if (defined('WP_ENV')) {
