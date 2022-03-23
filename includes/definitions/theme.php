@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use function Jascha030\WpFrontendCaseTheme\Theme\getThemeConfig;
+
 return [
     'theme.supports' => [
         'custom-background'                   => false,
@@ -21,4 +23,9 @@ return [
             'unlink-homepage-logo' => true,
         ],
     ],
+    'theme.css' => static function (): array {
+        $scripts = getThemeConfig('styles');
+
+        foreach ($scripts as $script);
+    },
 ];
