@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Jascha030\WpFrontendCaseTheme\Theme;
 
-use Jascha030\WpFrontendCaseTheme\Theme\Asset\Script\Script;
+use Jascha030\WpFrontendCaseTheme\Theme\Asset\Style\Style;
 use RuntimeException;
+use function add_theme_support;
 use function Jascha030\WpFrontendCaseTheme\Helpers\Theme\themeStyles;
 use function Jascha030\WpFrontendCaseTheme\Helpers\Theme\themeSupports;
+use function wp_enqueue_style;
 
 /**
  * Require theme/bootstrapping functions.
@@ -36,19 +38,23 @@ function addThemeSupports(): void
         }
 
         if (true === $value) {
-            \add_theme_support($feature);
+            add_theme_support($feature);
 
             continue;
         }
 
-        \add_theme_support($feature, $value);
+        add_theme_support($feature, $value);
     }
 }
 
-function addThemeCss(): void
+function enqueueStyles(): void
 {
+    if (empty(themeStyles())) {
+        return;
+    }
+
     foreach (themeStyles() as $value) {
-        if (! is_subclass_of($value, Script::class)) {
+        if (! is_subclass_of($value, Style::class) && ! $value instanceof Style) {
             continue;
         }
 
@@ -68,6 +74,8 @@ function addThemeCss(): void
 function init(): void
 {
     addThemeSupports();
+
+    add_action('wp_enqueue_scripts', 'enqueueStyles');
 }
 
 add_action('after_setup_theme', 'init', 10);
