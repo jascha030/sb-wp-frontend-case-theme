@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Jascha030\WpFrontendCaseTheme\Theme\Asset\Script;
 
-use Jascha030\WpFrontendCaseTheme\Theme\Asset\AssetInterface;
-
-interface LocalizableInterface extends AssetInterface
+interface LocalizeInterface
 {
-    public function inFooter(): bool;
+    public function localize(): bool;
+
+    public function getObjectName(): ?string;
+
+    public function getData(): ?array;
 }
