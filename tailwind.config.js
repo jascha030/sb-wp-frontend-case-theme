@@ -1,10 +1,9 @@
 const defaultTheme = require("tailwindcss/lib/public/default-theme");
 
 module.exports = {
+  mode: "jit",
   content: [
-    "./*.php",
-    "./templates/**/*.{html,js,twig,php}",
-    "./src/**/*.{html,js,twig,php}"
+    "./templates/twig/**/*.{html,twig,php}"
   ],
   theme: {
     extend: {
