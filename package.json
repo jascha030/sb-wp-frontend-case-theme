@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "postcss src/styles/tailwind.css -o dist/tailwind.css"
+    "preinstall": "npx only-allow pnpm",
+    "dev": "postcss ./src/styles --dir ./dist --watch",
+    "build": "postcss ./src/styles --dir ./dist"
   },
   "repository": {
     "type": "git",
