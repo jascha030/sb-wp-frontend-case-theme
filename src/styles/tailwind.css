@@ -8,14 +8,12 @@
     font-weight: normal;
 }
 
-
 @font-face {
     font-family: 'Proxima Nova';
     src: local('Proxima Nova Bold'), local('ProximaNova-Bold'),
     url('./../fonts/Proxima Nova Bold.otf') format('opentype');
     font-weight: bold;
 }
-
 
 @font-face {
     font-family: 'Proxima Nova';
@@ -25,3 +23,17 @@
 }
 
 @tailwind utilities;
+
+@layer base {
+    html, body {
+        @apply text-font-normal min-h-screen;
+    }
+
+    :is(h1, h2, h3, h4, h5, h6) {
+        @apply text-font-dark;
+    }
+
+    a {
+        @apply text-font-url no-underline;
+    }
+}
