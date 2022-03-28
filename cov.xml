@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1647985372">
-  <project timestamp="1647985372">
+<coverage generated="1648505584">
+  <project timestamp="1648505584">
     <file name="/Users/jaschavanaalst/.development/Projects/Wordpress/themes/wp-frontend-case-theme/app/Exception/Config/ConfigExceptionInterface.php">
       <metrics loc="27" ncloc="15" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
@@ -27,6 +27,93 @@
       <line num="55" type="stmt" count="3"/>
       <metrics loc="60" ncloc="51" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="18" coveredelements="18"/>
     </file>
-    <metrics files="2" loc="87" ncloc="66" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="18" coveredelements="18"/>
+    <file name="/Users/jaschavanaalst/.development/Projects/Wordpress/themes/wp-frontend-case-theme/app/Theme/Asset/AssetAbstract.php">
+      <class name="Jascha030\WpFrontendCaseTheme\Theme\Asset\AssetAbstract" namespace="global">
+        <metrics complexity="7" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="14" coveredelements="0"/>
+      </class>
+      <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="20" type="method" name="getHandle" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="22" type="stmt" count="0"/>
+      <line num="28" type="method" name="getFile" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="30" type="stmt" count="0"/>
+      <line num="36" type="method" name="getDependencies" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="38" type="stmt" count="0"/>
+      <line num="44" type="method" name="getVersion" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="46" type="stmt" count="0"/>
+      <line num="55" type="method" name="create" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="57" type="stmt" count="0"/>
+      <line num="58" type="stmt" count="0"/>
+      <line num="61" type="stmt" count="0"/>
+      <metrics loc="64" ncloc="48" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="14" coveredelements="0"/>
+    </file>
+    <file name="/Users/jaschavanaalst/.development/Projects/Wordpress/themes/wp-frontend-case-theme/app/Theme/Asset/Script/LocalizeInterface.php">
+      <metrics loc="15" ncloc="15" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/Users/jaschavanaalst/.development/Projects/Wordpress/themes/wp-frontend-case-theme/app/Theme/Asset/Script/Script.php">
+      <class name="Jascha030\WpFrontendCaseTheme\Theme\Asset\Script\Script" namespace="global">
+        <metrics complexity="7" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="18" coveredelements="0"/>
+      </class>
+      <line num="22" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="32" type="stmt" count="0"/>
+      <line num="33" type="stmt" count="0"/>
+      <line num="34" type="stmt" count="0"/>
+      <line num="35" type="stmt" count="0"/>
+      <line num="37" type="stmt" count="0"/>
+      <line num="40" type="method" name="localize" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="42" type="stmt" count="0"/>
+      <line num="45" type="method" name="getObjectName" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="47" type="stmt" count="0"/>
+      <line num="48" type="stmt" count="0"/>
+      <line num="49" type="stmt" count="0"/>
+      <line num="52" type="method" name="getData" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="54" type="stmt" count="0"/>
+      <line num="55" type="stmt" count="0"/>
+      <line num="56" type="stmt" count="0"/>
+      <line num="62" type="method" name="inFooter" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="64" type="stmt" count="0"/>
+      <metrics loc="67" ncloc="64" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="18" coveredelements="0"/>
+    </file>
+    <file name="/Users/jaschavanaalst/.development/Projects/Wordpress/themes/wp-frontend-case-theme/app/Theme/Asset/Script/ScriptInterface.php">
+      <metrics loc="16" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/Users/jaschavanaalst/.development/Projects/Wordpress/themes/wp-frontend-case-theme/app/Theme/Asset/Style/Style.php">
+      <class name="Jascha030\WpFrontendCaseTheme\Theme\Asset\Style\Style" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+      </class>
+      <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="23" type="stmt" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <line num="28" type="method" name="getMedia" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="30" type="stmt" count="0"/>
+      <metrics loc="33" ncloc="33" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+    </file>
+    <file name="/Users/jaschavanaalst/.development/Projects/Wordpress/themes/wp-frontend-case-theme/app/Theme/Theme.php">
+      <class name="Jascha030\WpFrontendCaseTheme\Theme\Theme" namespace="global">
+        <metrics complexity="6" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="12" coveredelements="12"/>
+      </class>
+      <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="21" type="method" name="getRootDir" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="29" type="method" name="getRootUri" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="31" type="stmt" count="1"/>
+      <line num="37" type="method" name="getScripts" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="39" type="stmt" count="1"/>
+      <line num="45" type="method" name="getStyles" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="47" type="stmt" count="1"/>
+      <line num="53" type="method" name="getSupports" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="55" type="stmt" count="1"/>
+      <metrics loc="58" ncloc="43" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="12" coveredelements="12"/>
+    </file>
+    <file name="/Users/jaschavanaalst/.development/Projects/Wordpress/themes/wp-frontend-case-theme/app/Theme/Traits/ThemeRootProviderTrait.php">
+      <class name="Jascha030\WpFrontendCaseTheme\Theme\Traits\ThemeRootProviderTrait" namespace="global">
+        <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+      </class>
+      <line num="12" type="method" name="getThemeRoot" visibility="public" complexity="3" crap="12" count="0"/>
+      <line num="15" type="stmt" count="0"/>
+      <line num="16" type="stmt" count="0"/>
+      <line num="17" type="stmt" count="0"/>
+      <metrics loc="21" ncloc="21" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+    </file>
+    <metrics files="9" loc="361" ncloc="303" classes="6" methods="25" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="46" coveredstatements="19" elements="71" coveredelements="30"/>
   </project>
 </coverage>
