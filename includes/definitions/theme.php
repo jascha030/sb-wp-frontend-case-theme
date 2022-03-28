@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 use Jascha030\WpFrontendCaseTheme\Theme\Asset\Script\Script;
 use Jascha030\WpFrontendCaseTheme\Theme\Asset\Style\Style;
+use Jascha030\WpFrontendCaseTheme\Theme\Theme;
+use Jascha030\WpFrontendCaseTheme\Theme\ThemeInterface;
+use function DI\create;
+use function DI\get;
 use function Jascha030\WpFrontendCaseTheme\Theme\getThemeConfig;
 
 return [
@@ -44,4 +48,9 @@ return [
 
         return $scripts;
     },
+    ThemeInterface::class => create(Theme::class)->constructor(
+        get('theme.scripts'),
+        get('theme.styles'),
+        get('theme.supports')
+    ),
 ];
