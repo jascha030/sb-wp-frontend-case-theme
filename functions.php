@@ -5,23 +5,14 @@ declare(strict_types=1);
 namespace Jascha030\WpFrontendCaseTheme\Theme;
 
 use Jascha030\WpFrontendCaseTheme\Theme\Asset\Style\Style;
-use RuntimeException;
+use function Jascha030\WpFrontendCaseTheme\Helpers\Theme\theme;
 use function add_theme_support;
-use function Jascha030\WpFrontendCaseTheme\Helpers\Theme\themeStyles;
-use function Jascha030\WpFrontendCaseTheme\Helpers\Theme\themeSupports;
 use function wp_enqueue_style;
 
 /**
  * Require theme/bootstrapping functions.
  */
 require_once __DIR__ . '/includes/bootstrap.php';
-
-/**
- * Require the available composer autoload.php file(s).
- *
- * @throws RuntimeException
- */
-load(__DIR__);
 
 /**
  * Abort after autoloaders if outside of WordPress context.
@@ -32,7 +23,7 @@ if (! defined('ABSPATH')) {
 
 function addThemeSupports(): void
 {
-    foreach (themeSupports() as $feature => $value) {
+    foreach (theme()->getSupports() as $feature => $value) {
         if (false === $value) {
             continue;
         }
@@ -49,11 +40,7 @@ function addThemeSupports(): void
 
 function enqueueStyles(): void
 {
-    if (empty(themeStyles())) {
-        return;
-    }
-
-    foreach (themeStyles() as $value) {
+    foreach (theme()->getStyles() as $value) {
         if (! is_subclass_of($value, Style::class) && ! $value instanceof Style) {
             continue;
         }
