@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jascha030\WpFrontendCaseTheme\Tests\Theme;
 
 use DI\NotFoundException;
@@ -15,7 +17,7 @@ use function Jascha030\WpFrontendCaseTheme\Helpers\Theme\theme;
  * @internal
  * @covers \Jascha030\WpFrontendCaseTheme\Theme\Theme
  */
-class ThemeTest extends TestCase
+final class ThemeTest extends TestCase
 {
     public static ?string $root = null;
 
