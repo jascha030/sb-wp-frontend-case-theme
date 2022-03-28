@@ -28,12 +28,12 @@ return [
         ],
     ],
     'autoload_paths' => static fn (string $themeRoot): array => defined('ABSPATH')
-        ? [$themeRoot]
-        : [
+        ? [
             ABSPATH,
             $themeRoot,
             dirname(ABSPATH, 2),
-        ],
+        ]
+        : [$themeRoot],
     'definition_dirs' => [
         __DIR__ . '/definitions',
     ],
