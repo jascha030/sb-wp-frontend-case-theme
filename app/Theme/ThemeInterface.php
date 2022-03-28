@@ -10,6 +10,16 @@ use Jascha030\WpFrontendCaseTheme\Theme\Asset\Style\StyleInterface;
 interface ThemeInterface
 {
     /**
+     * Get the theme root dir.
+     */
+    public function getRootDir(): string;
+
+    /**
+     * Get the theme root uri depending on availability.
+     */
+    public function getRootUri(): ?string;
+
+    /**
      * @return ScriptInterface[]
      */
     public function getScripts(): array;
