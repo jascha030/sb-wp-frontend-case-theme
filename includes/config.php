@@ -3,21 +3,20 @@
 declare(strict_types=1);
 
 return [
-    'environment'    => defined('WP_ENV') ? WP_ENV : 'develop',
-    'styles'         => ['dist-tailwind' => 'dist/tailwind.css'],
-    'scripts'        => [],
-    'autoload_paths' => static function (string $themeRoot): array {
-        $paths = [$themeRoot];
-
-        if (defined('ABSPATH')) {
-            $paths = [ABSPATH, dirname(ABSPATH, 2), ...$paths];
-        }
-
-        if (! function_exists('apply_filters')) {
-            return $paths;
-        }
-
-        return apply_filters('sb_fec_theme_autoload_paths', $paths);
-    },
-    'definition_dirs' => [__DIR__ . '/definitions'],
+    'environment' => defined('WP_ENV') ? WP_ENV : 'develop',
+    'styles'      => [
+        'dist-tailwind' => 'dist/tailwind.css',
+    ],
+    'scripts' => [
+    ],
+    'autoload_paths' => static fn (string $themeRoot): array => defined('ABSPATH')
+        ? [$themeRoot]
+        : [
+            ABSPATH,
+            $themeRoot,
+            dirname(ABSPATH, 2),
+        ],
+    'definition_dirs' => [
+        __DIR__ . '/definitions',
+    ],
 ];
