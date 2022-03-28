@@ -70,7 +70,7 @@ function getThemeConfig(?string $key = null): mixed
 /**
  * Array map callback used in the `load()` function.
  *
- * @see load()
+ * @see getAutoloaders()
  * @see \array_map()
  */
 function sanitizeAutoloadPath(string $path): string
@@ -90,46 +90,6 @@ function sanitizeAutoloadPath(string $path): string
     }
 
     return $path . '/vendor/autoload.php';
-}
-
-/**
- * Resolves and requires the configured autoloaders.
- *
- * @throws RuntimeException
- */
-function load(string $themeRoot): void
-{
-    $resolver = getThemeConfig('autoload_paths');
-
-    if (is_callable($resolver)) {
-        $paths = $resolver($themeRoot);
-    }
-
-    if (is_array($resolver)) {
-        $paths = $resolver;
-    }
-
-    if (! is_callable($resolver) && ! is_array($resolver)) {
-        // todo: config exception.
-        throw new RuntimeException('No valid config set for key: "autoload_paths".');
-    }
-
-    /**
-     * @noinspection PhpUndefinedVariableInspection
-     */
-    $paths = array_filter(
-        array_map('Jascha030\WpFrontendCaseTheme\Theme\sanitizeAutoloadPath', $paths),
-        static fn (string $path): bool => file_exists($path)
-    );
-
-    if (0 === count($paths)) {
-        // todo: add composer exception.
-        throw new RuntimeException('No autoloaders could be retrieved.');
-    }
-
-    foreach ($paths as $path) {
-        require_once $path;
-    }
 }
 
 /**
@@ -181,3 +141,61 @@ function add_filter(string $tag, string|callable $callable, int $prio = 10, int 
 
     return \add_filter($tag, namespaced($callable), $prio, $args);
 }
+
+/**
+ * Resolves and requires the configured autoloaders.
+ *
+ * @throws RuntimeException
+ */
+function getAutoloaders(string $themeRoot): \Generator
+{
+    $resolver = getThemeConfig('autoload_paths');
+
+    if (is_callable($resolver)) {
+        $paths = $resolver($themeRoot);
+    }
+
+    if (is_array($resolver)) {
+        $paths = $resolver;
+    }
+
+    if (! is_callable($resolver) && ! is_array($resolver)) {
+        // todo: config exception.
+        throw new RuntimeException('No valid config set for key: "autoload_paths".');
+    }
+
+    /**
+     * @noinspection PhpUndefinedVariableInspection
+     */
+    $paths = array_filter(
+        array_map('Jascha030\WpFrontendCaseTheme\Theme\sanitizeAutoloadPath', $paths),
+        static fn (string $path): bool => file_exists($path)
+    );
+
+    if (0 === count($paths)) {
+        throw new RuntimeException('No autoloaders could be retrieved.');
+    }
+
+    foreach ($paths as $path) {
+        yield $path;
+    }
+}
+
+/**
+ * Execute on load.
+ *
+ * @throws RuntimeException
+ */
+(static function (): void {
+    static $loaded;
+
+    if (isset($loaded)) {
+        return;
+    }
+
+    foreach (getAutoloaders(dirname(__DIR__)) as $path) {
+        require_once $path;
+    }
+
+    $loaded = true;
+})();

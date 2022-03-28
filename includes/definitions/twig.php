@@ -109,7 +109,7 @@ return [
             'filter',
         );
     },
-    'twig.filters' => static fn (ContainerInterface $container): array => extendableData($container, 'twig', 'filters'),
+    'twig.filters' => static fn (ContainerInterface $container): array => [],
     'twig.globals' => static function (): array {
         return array_merge(getTemplateGlobals(), [
             'twig_info' => [

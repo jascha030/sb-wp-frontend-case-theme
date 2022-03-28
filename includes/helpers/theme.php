@@ -6,47 +6,38 @@ namespace Jascha030\WpFrontendCaseTheme\Helpers\Theme;
 
 use DI\NotFoundException;
 use Exception;
-use Jascha030\WpFrontendCaseTheme\Theme\Asset\Script\Script;
-use Jascha030\WpFrontendCaseTheme\Theme\Asset\Style\Style;
+use Jascha030\WpFrontendCaseTheme\Theme\ThemeInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use function Jascha030\WpFrontendCaseTheme\Helpers\Container\service;
 
-function themeSupports(): array
+/**
+ * Retrieve the bound ThemeInterface implementation.
+ *
+ * @noinspection PhpUnhandledExceptionInspection
+ */
+function getTheme(): ThemeInterface
 {
     try {
-        return service('theme.supports');
+        return service(ThemeInterface::class);
     } catch (Exception|NotFoundException|NotFoundExceptionInterface|ContainerExceptionInterface $e) {
-        \error_log($e->getMessage());
+        if (! defined('ABSPATH')) {
+            throw $e;
+        }
 
-        return [];
+        \error_log($e->getMessage());
+        \wp_die($e->getMessage());
     }
 }
 
 /**
- * @return Style[]
+ * Retrieve the theme instance, alias of `getTheme()`.
+ *
+ * @see          ThemeInterface
+ *
+ * @noinspection PhpUnhandledExceptionInspection
  */
-function themeStyles(): array
+function theme(): ThemeInterface
 {
-    try {
-        return service('theme.css');
-    } catch (Exception|NotFoundException|NotFoundExceptionInterface|ContainerExceptionInterface $e) {
-        \error_log($e->getMessage());
-
-        return [];
-    }
-}
-
-/**
- * @return Script[]
- */
-function themeScripts(): array
-{
-    try {
-        return service('theme.css');
-    } catch (Exception|NotFoundException|NotFoundExceptionInterface|ContainerExceptionInterface $e) {
-        \error_log($e->getMessage());
-
-        return [];
-    }
+    return getTheme();
 }
