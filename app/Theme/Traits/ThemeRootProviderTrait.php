@@ -4,23 +4,16 @@ declare(strict_types=1);
 
 namespace Jascha030\WpFrontendCaseTheme\Theme\Traits;
 
-use DI\NotFoundException;
 use Exception;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
-use function Jascha030\WpFrontendCaseTheme\Helpers\Container\service;
+use function Jascha030\WpFrontendCaseTheme\Helpers\Theme\theme;
 
 trait ThemeRootProviderTrait
 {
-    public function getThemeRoot(): string
+    public function getThemeRoot(bool $preferUri = true): string
     {
-        if (function_exists('get_template_directory_uri')) {
-            return get_template_directory_uri();
-        }
-
         try {
-            return service('theme.root');
-        } catch (Exception|NotFoundException|NotFoundExceptionInterface|ContainerExceptionInterface) {
+            return $preferUri ? theme()->getRootUri() : theme()->getRootDir();
+        } catch (Exception) {
             return dirname(__FILE__, 4);
         }
     }
