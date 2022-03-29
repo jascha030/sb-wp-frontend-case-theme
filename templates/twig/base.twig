@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!--suppress HtmlRequiredLangAttribute -->
+<html {{ language_attributes | raw }}>
+    {% include head|default('layout/base-head.twig') %}
+    <body class="{{ body_class | raw }}">
+        {{ action('after_body_open') }}
+            <div class="flex min-h-screen w-full h-full">
+            {% if wp_query.is_404 %}
+            {% else %}
+            {% endblock %}
+        </div>
+
+        {% include footer|default('layout/base-footer.twig') %}
+        {{ action('before_body_close') }}
+    </body>
+</html>

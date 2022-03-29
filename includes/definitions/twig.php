@@ -12,7 +12,6 @@ use Twig\TwigFilter;
 use Twig\TwigFunction;
 use function DI\create;
 use function DI\get;
-use function Jascha030\WpFrontendCaseTheme\Helpers\Container\extendableData;
 
 function getTemplateGlobals(): array
 {
