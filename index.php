@@ -7,4 +7,4 @@ use function Jascha030\WpFrontendCaseTheme\Helpers\Twig\render;
 /**
  * @noinspection PhpUnhandledExceptionInspection
  */
-render('layout/base.twig');
+render('index.twig');

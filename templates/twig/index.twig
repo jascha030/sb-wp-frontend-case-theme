@@ -1,0 +1,10 @@
+{% extends 'base.twig' %}
+
+{% block base_content %}
+    {% if wp_query.is_404 %}
+        {% include '404.twig' %}
+        {#{% else if wp_query.is_home %}#}
+    {% else %}
+        {% include 'components/post-loop.twig' %}
+    {% endif %}
+{% endblock %}
