@@ -1,5 +1,7 @@
-{% if wp_query.have_posts %}
-
+{% if not wp_query.have_posts %}
+    <p>No posts bruh.</p>
 {% else %}
-
+    {% for post in loop %}
+        {{ post.post_title }}
+    {% endfor %}
 {% endif %}

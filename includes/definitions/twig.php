@@ -12,12 +12,28 @@ use Twig\TwigFilter;
 use Twig\TwigFunction;
 use function DI\create;
 use function DI\get;
+use function Jascha030\WpFrontendCaseTheme\Helpers\Twig\getLoop;
 
 function getTemplateGlobals(): array
 {
-    global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite, $wpdb, $wp_version, $wp, $id, $comment, $user_ID;
+    global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite, $wpdb, $wp_version, $wp, $id, $comment, $user_ID, $loop;
 
-    return compact('posts', 'post', 'wp_did_header', 'wp_query', 'wp_rewrite', 'wpdb', 'wp_version', 'wp', 'id', 'comment', 'user_ID');
+    $loop = getLoop();
+
+    return compact(
+        'loop',
+        'posts',
+        'post',
+        'wp_did_header',
+        'wp_query',
+        'wp_rewrite',
+        'wpdb',
+        'wp_version',
+        'wp',
+        'id',
+        'comment',
+        'user_ID'
+    );
 }
 
 return [
