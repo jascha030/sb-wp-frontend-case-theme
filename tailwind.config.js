@@ -24,6 +24,9 @@ module.exports = {
           300: '#525252',
           400: '#262626',
         }
+      },
+      "backgroundImage": {
+        'hero-home': "url('../src/image/background-sb.png')"
       }
     },
   },

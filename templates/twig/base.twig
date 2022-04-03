@@ -5,7 +5,7 @@
     <body class="{{ body_class | raw }}">
         {{ action('after_body_open') }}
         {% block header %}{% endblock %}
-        <div class="flex min-h-screen w-full h-full">
+        <div class="flex min-h-screen w-full h-full flex-col">
             {% block base_content %}
                 {% include 'content/base-content.twig' %}
             {% endblock %}

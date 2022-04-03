@@ -113,6 +113,8 @@ return [
 
         $is_front_page = static fn (): bool => \is_front_page();
 
+        $image = static fn (string $name): string => \get_template_directory_uri() . '/src/image/' . $name;
+
         return compact(
             'do_action',
             'apply_filters',
@@ -124,7 +126,8 @@ return [
             'the_post',
             'action',
             'filter',
-            'is_front_page'
+            'is_front_page',
+            'image'
         );
     },
     'twig.filters' => static fn (ContainerInterface $container): array => [],
