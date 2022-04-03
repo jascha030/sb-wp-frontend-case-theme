@@ -43,3 +43,21 @@ function getLoop(\WP_Query|array|null $args = null): PostCollection
 
     return PostCollection::fromQuery($args);
 }
+
+/**
+ * @throws ContainerExceptionInterface|NotFoundException|NotFoundExceptionInterface
+ */
+function resolveTemplate(): string
+{
+    if (! isset(get_queried_object()->post_type)) {
+        return 'index.twig';
+    }
+
+    $template = get_queried_object()->post_type . '.twig';
+
+    if (file_exists(service('twig.root') . '/' . $template)) {
+        return $template;
+    }
+
+    return 'index.twig';
+}

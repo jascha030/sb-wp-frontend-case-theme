@@ -37,7 +37,7 @@ function getTemplateGlobals(): array
 }
 
 return [
-    'twig.paths'     => [dirname(__FILE__, 3) . '/templates/twig'],
+    'twig.root'      => dirname(__FILE__, 3) . '/templates/twig',
     'twig.functions' => static function (): array {
         /**
          * do_action, also can be called as action.
@@ -93,7 +93,7 @@ return [
          * @param null|string $name
          * @param array       $args
          *
-         * @return mixed
+         * @return false|void
          *
          * @see get_footer()
          */
@@ -111,6 +111,8 @@ return [
          */
         $the_post = static fn () => \the_post();
 
+        $is_front_page = static fn (): bool => \is_front_page();
+
         return compact(
             'do_action',
             'apply_filters',
@@ -122,6 +124,7 @@ return [
             'the_post',
             'action',
             'filter',
+            'is_front_page'
         );
     },
     'twig.filters' => static fn (ContainerInterface $container): array => [],
@@ -133,7 +136,7 @@ return [
             ],
         ]);
     },
-    LoaderInterface::class => create(FilesystemLoader::class)->constructor(get('twig.paths')),
+    LoaderInterface::class => create(FilesystemLoader::class)->constructor(get('twig.root')),
     Environment::class     => static function (ContainerInterface $container): Environment {
         $environment = new Environment($container->get(LoaderInterface::class));
 
