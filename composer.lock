@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1370ac8c4729fe5c7e96b9744d09c81b",
+    "content-hash": "1f9a7e83eeec71d343f608938f819510",
     "packages": [
         {
             "name": "composer/installers",
@@ -201,6 +201,52 @@
                 "source": "https://github.com/jascha030/twig-service/tree/1.0.0"
             },
             "time": "2022-02-21T13:54:27+00:00"
+        },
+        {
+            "name": "jascha030/wp-post-iterator",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jascha030/wp-post-iterator.git",
+                "reference": "59734033ef65551657b136a3e65888ae0270f615"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jascha030/wp-post-iterator/zipball/59734033ef65551657b136a3e65888ae0270f615",
+                "reference": "59734033ef65551657b136a3e65888ae0270f615",
+                "shasum": ""
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.8",
+                "roave/security-advisories": "dev-latest",
+                "roots/wordpress": "^5.9",
+                "symfony/var-dumper": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "wordpress-install-dir": ".wp/"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jascha030\\WpPostIterator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Jascha030",
+                    "email": "contact@jaschavanaalst.nl"
+                }
+            ],
+            "description": "Simple adapter for the WP_Query class, built mainly for, but not limited to usage with twig/twig.",
+            "support": {
+                "issues": "https://github.com/jascha030/wp-post-iterator/issues",
+                "source": "https://github.com/jascha030/wp-post-iterator/tree/0.0.1"
+            },
+            "time": "2022-04-03T12:56:45+00:00"
         },
         {
             "name": "opis/closure",

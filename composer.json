@@ -4,7 +4,8 @@
   "require": {
     "composer/installers": "*",
     "php-di/php-di": "^6.3",
-    "jascha030/twig-service": "^1.0"
+    "jascha030/twig-service": "^1.0",
+    "jascha030/wp-post-iterator": "^0"
   },
   "autoload": {
     "files": [
