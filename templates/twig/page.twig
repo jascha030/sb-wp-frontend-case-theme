@@ -1,0 +1,9 @@
+{% extends 'base.twig' %}
+
+{% block base_content %}
+    {% if is_front_page() %}
+        {% include 'content/home.twig' %}
+    {% else %}
+        {% include 'content/page.twig' %}
+    {% endif %}
+{% endblock %}
